@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 var http = require('http'),
-    ovh = require('ovh')
+    ovh = require('ovh');
 
 var Ows = ovh({
   sessionHandler:      'sessionHandler/r4',
@@ -10,6 +10,8 @@ var Ows = ovh({
 
 var cache = {};
 var srv = http.createServer(function (req, res) {
+  "use strict";
+
   res.sendResponse = function (httpCode, param) {
     if (typeof param === 'string') {
       console.error('[Error][X-Auth-User = ' + req.headers['x-auth-user'] + '] ' + param);
@@ -33,12 +35,12 @@ var srv = http.createServer(function (req, res) {
     return res.sendResponse(204, cache[req.headers['x-auth-user']]);
   }
 
-  Ows.sessionHandler.getAnonymousSession.call({}, function(success, response) {
+  Ows.sessionHandler.getAnonymousSession.call({}, function (success, response) {
     if (!success) {
       return res.sendResponse(500, response.message);
     }
 
-    Ows.hubic.getHubics.call({ sessionId: response.session.id, email: req.headers['x-auth-user'] }, function(success, hubics) {
+    Ows.hubic.getHubics.call({ sessionId: response.session.id, email: req.headers['x-auth-user'] }, function (success, hubics) {
       if (!success) {
         return res.sendResponse(500, hubics.message);
       }
@@ -47,12 +49,12 @@ var srv = http.createServer(function (req, res) {
         return res.sendResponse(404, 'No hubiC account');
       }
 
-      Ows.sessionHandler.login.call({ login: hubics[0].nic, password: req.headers['x-auth-key'], context: 'hubic' }, function(success, response) {
+      Ows.sessionHandler.login.call({ login: hubics[0].nic, password: req.headers['x-auth-key'], context: 'hubic' }, function (success, response) {
         if (!success) {
           return res.sendResponse(403, response.message);
         }
 
-        Ows.hubic.getHubic.call({ sessionId: response.session.id, hubicId: hubics[0].id}, function(success, hubic) {
+        Ows.hubic.getHubic.call({ sessionId: response.session.id, hubicId: hubics[0].id}, function (success, hubic) {
           if (!success) {
             return res.sendResponse(500, hubic.message);
           }

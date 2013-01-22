@@ -4,6 +4,7 @@ Node hubiC Swift Authentification
 **This script is unofficial and consequently not maintained by OVH.**
 
 This script provides a simple Node.js HTTP server responding to a standard OpenStack Swift authentication request (v1.0).
+Tested with *Swift CLI* and *Cyberduck*.
 
 For example:
 

@@ -1,6 +1,6 @@
 {
   "name": "hubic-swiftauth",
-  "description": "",
+  "description": "Simple Node.js HTTP server providing standard OpenStack Swift authentication for hubiC by OVH",
   "author": "Vincent Giersch <mail@vincent.sh>",
   "license": "MIT",
   "main": "hubic-swiftauth.js",

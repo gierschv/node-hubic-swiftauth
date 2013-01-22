@@ -1,5 +1,5 @@
-Node hubiC Swift Authentification
-=================================
+Node hubiC Swift Authentication
+===============================
 
 **This script is unofficial and consequently not maintained by OVH.**
 

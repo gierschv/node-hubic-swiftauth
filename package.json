@@ -1,0 +1,18 @@
+{
+  "name": "hubic-swiftauth",
+  "description": "",
+  "author": "Vincent Giersch <mail@vincent.sh>",
+  "license": "MIT",
+  "main": "hubic-swiftauth.js",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gierschv/node-hubic-swiftauth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gierschv/node-hubic-swiftauth/issues"
+  },
+  "dependencies" : {
+    "ovh": ">= 0.1.1"
+  }
+}

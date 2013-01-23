@@ -9,7 +9,8 @@ Tested with *Swift CLI* and *Cyberduck*.
 For example:
 
 ```
-$ HOST=127.0.0.1 PORT=3000 ./hubic-swiftauth.js &
+$ npm install -d
+$ HOST=127.0.0.1 PORT=3000 node --harmony-proxies hubic-swiftauth.js &
 $ curl -D - \
      -H "X-Auth-User: my-hubic-account@domain.tld" \
      -H "X-Auth-Key: my-hubic-password" \
@@ -23,7 +24,7 @@ Connection: keep-alive
 
 With Swift CLI:
 ```
-$ swift -A http://localhost:8080/v1.0 -U my-hubic-account@domain.tld -K my-hubic-password stat
+$ swift -A http://localhost:3000/v1.0 -U my-hubic-account@domain.tld -K my-hubic-password stat
    Account: AUTH_00000000000000000000000000000000
 Containers: 3
    Objects:

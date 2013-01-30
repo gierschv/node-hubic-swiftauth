@@ -20,6 +20,6 @@
     "npm":  "1.1.x"
   },
   "scripts" : {
-    "start" : "node hubic-swiftauth.js"
+    "start" : "node --harmony-proxies hubic-swiftauth.js"
   }
 }

@@ -1,6 +1,7 @@
 #! /usr/bin/env node --harmony-proxies
 
-var http = require('http'),
+var fs = require('fs'),
+    http = require(process.env.SSL ? 'https' : 'http'),
     ovh = require('ovh');
 
 var Ows = ovh({
@@ -9,7 +10,7 @@ var Ows = ovh({
 });
 
 var cache = {};
-var srv = http.createServer(function (req, res) {
+var httpListener = function (req, res) {
   "use strict";
 
   res.sendResponse = function (httpCode, param) {
@@ -72,6 +73,19 @@ var srv = http.createServer(function (req, res) {
       });
     });
   });
-});
+}
+
+var srv;
+if (process.env.SSL) {
+  var options = {
+    key: fs.readFileSync('misc/localhost.key'),
+    cert: fs.readFileSync('misc/localhost.crt')
+  };
+
+  srv = http.createServer(options, httpListener);
+}
+else {
+  srv = http.createServer(httpListener);
+}
 
 srv.listen(process.env.PORT || 8080, process.env.HOST);

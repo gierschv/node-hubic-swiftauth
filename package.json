@@ -3,7 +3,7 @@
   "description": "Simple Node.js HTTP server providing standard OpenStack Swift authentication for hubiC by OVH",
   "author": "Vincent Giersch <mail@vincent.sh>",
   "license": "MIT",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "git://github.com/gierschv/node-hubic-swiftauth.git"

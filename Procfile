@@ -1,1 +1,1 @@
-web: node --harmony-proxies hubic-swiftauth.js
+web: node hubic-swiftauth.js

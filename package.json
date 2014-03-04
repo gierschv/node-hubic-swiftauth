@@ -1,9 +1,9 @@
 {
   "name": "hubic-swiftauth",
-  "description": "Simple Node.js HTTP server providing standard OpenStack Swift authentication for hubiC by OVH",
+  "description": "A qucik written and simple Node.js HTTP server providing standard OpenStack Swift authentication for hubiC by OVH",
   "author": "Vincent Giersch <mail@vincent.sh>",
   "license": "MIT",
-  "version": "0.0.4-1",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/gierschv/node-hubic-swiftauth.git"
@@ -11,14 +11,11 @@
   "bugs": {
     "url": "https://github.com/gierschv/node-hubic-swiftauth/issues"
   },
-  "dependencies" : {
-    "ovh": "0.3.x"
-  },
   "engines": {
-    "node": "0.8.x",
+    "node": "0.10.x",
     "npm":  "1.1.x"
   },
   "scripts" : {
-    "start" : "node --harmony-proxies hubic-swiftauth.js"
+    "start" : "node hubic-swiftauth.js"
   }
 }

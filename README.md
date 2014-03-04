@@ -1,51 +1,35 @@
-Node hubiC Swift Authentication
-===============================
+# Node hubiC Swift Authentication
 
-**This script is unofficial and consequently not maintained by OVH.**
+**This script is written for my personal usage, is unofficial and consequently
+not maintained by OVH.**
 
-This script provides a simple Node.js HTTP server responding to a standard OpenStack Swift authentication request (v1.0).
+This script provides a simple Node.js HTTP server responding to a standard
+OpenStack Swift authentication request (v1.0) using the hubic OAuth API.
 Tested with *Swift CLI* and *Cyberduck*.
 
-Install dependencies and launch on UNIX:
+### Usage
 
-```
-$ npm install -d
-$ HOST=127.0.0.1 PORT=3000 node --harmony-proxies hubic-swiftauth.js
-```
+*  Create a hubiC application on hubic.com (My account > Your applications).
 
-Install dependencies and launch on Windows (example with SSL):
-
+* Launch the script:
 ```
-cmd /C "npm install -d"
-SET HOST=127.0.0.1
-SET PORT=443
-SET SSL=1
-node --harmony-proxies hubic-swiftauth.js
+$ export APP_KEY=api_hubic_xxx
+$ export APP_SECRET=42
+$ export BASE_URL=https://example.com/
+$ node hubic-swiftauth.js
 ```
 
-You can run it as https while defining the *SSL* environment variable, the key / certificat used are in folder *misc*.
-
-Usage example with CURL and Swift CLI
+* Go on the base url your specified (here https://example.com/), log in using
+your hubiC credentials and you'll get this message:
 
 ```
-$ curl -D - \
-     -H "X-Auth-User: my-hubic-account@domain.tld" \
-     -H "X-Auth-Key: my-hubic-password" \
-     http://localhost:3000/v1.0
-HTTP/1.1 204 No Content
-X-Storage-Url: https://endpoint.hubic.ovh.net/v1/AUTH_00000000000000000000000000000000
-X-Auth-Token: 00000000000000000000000000000000
-Date: Tue, 22 Jan 2013 16:30:37 GMT
-Connection: keep-alive
+Now you can use the Swift v1 API using these credentials:
+	Endpoint: https://example.com/
+	User: hubic
+	Password: my-token
 
-$ swift -A http://localhost:3000/v1.0 -U my-hubic-account@domain.tld -K my-hubic-password stat
-   Account: AUTH_00000000000000000000000000000000
-Containers: 3
-   Objects:
-     Bytes:
-Meta Quota:
-Meta Temp-Url-Key:
-X-Timestamp:
-X-Trans-Id:
-Accept-Ranges: bytes
+Example if you use the swift cli client:
+	$ swift -A https://example.com/auth/v1.0 -U hubic -K xxxxxxxxxxxxx
 ```
+
+* You can now use these credentials until you revoke them.

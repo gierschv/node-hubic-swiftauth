@@ -29,7 +29,7 @@ Now you can use the Swift v1 API using these credentials:
 	Password: my-token
 
 Example if you use the swift cli client:
-	$ swift -A https://example.com/auth/v1.0 -U hubic -K xxxxxxxxxxxxx
+	$ swift -A https://example.com/auth/v1.0 -U hubic -K my-token
 ```
 
 * You can now use these credentials until you revoke them.

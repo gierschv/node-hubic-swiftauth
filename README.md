@@ -16,7 +16,7 @@ Tested with *Swift CLI* and *Cyberduck*.
 $ export APP_KEY=api_hubic_xxx
 $ export APP_SECRET=42
 $ export BASE_URL=https://example.com/
-$ node hubic-swiftauth.js
+$ HOST=0.0.0.0 PORT=8080 node --harmony-proxies hubic-swiftauth.js
 ```
 
 * Go on the base url your specified (here https://example.com/), log in using

@@ -171,5 +171,10 @@ var httpListener = function (req, res) {
   }
 }
 
-var srv = http.createServer(httpListener);
+var options = {
+  key: fs.readFileSync('server-key.pem'),
+  cert: fs.readFileSync('server-cert.pem')
+};
+
+var srv = https.createServer(options, httpListener);
 srv.listen(process.env.PORT || 8080, process.env.HOST);
